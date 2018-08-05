@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -10,8 +11,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost/loginapp');
-// var db = mongoose.connection;
+mongoose.connect(proess.env.MONGOPATH,proess.env.MONGOUSER,proess.env.MONGOPASS);
+var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var dashboard = require('./routes/dashboard');

@@ -95,28 +95,27 @@ router.post('/register', function (req, res) {
 		res.redirect('/?new=true');
 
 
-		// NEED A DB FOR THIS
-		// User.findOne({ email: {
-		// 		"$regex": "^" + email + "\\b", "$options": "i"
-		// }}, function (err, mail) {
-		// 	if (mail) {
-		// 		res.render('register', {
-		// 			mail: mail
-		// 		});
-		// 	}
-		// 	else {
-		// 		var newUser = new User({
-		// 			firstname: firstname,
-		// 			email: email,
-		// 			password: password
-		// 		});
-		// 		User.createUser(newUser, function (err, user) {
-		// 			if (err) throw err;
-		// 			console.log(user);
-		// 		});
-		// 		res.redirect('/', {successNewAccount: true});
-		// 	}
-		// });
+		User.findOne({ email: {
+				"$regex": "^" + email + "\\b", "$options": "i"
+		}}, function (err, mail) {
+			if (mail) {
+				res.render('register', {
+					mail: mail
+				});
+			}
+			else {
+				var newUser = new User({
+					firstname: firstname,
+					email: email,
+					password: password
+				});
+				User.createUser(newUser, function (err, user) {
+					if (err) throw err;
+					console.log(user);
+				});
+				res.redirect('/', {successNewAccount: true});
+			}
+		});
 
 	}
 });
