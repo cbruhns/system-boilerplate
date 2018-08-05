@@ -1,0 +1,36 @@
+{
+  "name": "system-boilerplate",
+  "version": "1.0.0",
+  "description": "CMS with secure areas",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbruhns/system-boilerplate.git"
+  },
+  "keywords": [
+    "cms"
+  ],
+  "author": "Cameron Bruhns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbruhns/system-boilerplate/issues"
+  },
+  "homepage": "https://github.com/cbruhns/system-boilerplate#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.6",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
