@@ -1,0 +1,124 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,400i,500,700');
+/* Reset */
+*{box-sizing:border-box;font-family: 'Montserrat', sans-serif;}
+html,body{margin:0;padding:0;}
+div,header,footer,nav,section,article,aside,form{
+    float:left;
+    display:block;
+    width:100%;
+    position: relative;
+}
+ul{list-style:none;margin:0;padding:0;}
+a{text-decoration: none;}
+.cf{clear:both;}
+
+/* GLOBALS */
+#topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:50px;
+    background:#262626;
+}
+
+/* Front Facing Forms */
+.middlepane{
+    max-width:400px;
+    margin: 100px auto 0 auto;
+    float:none;
+}
+.middlepane h1{
+    font-weight:200;
+    color:#999;
+    font-size:40px;
+}
+.middlepane p{
+    font-size:15px;
+}
+.middlepane p a{
+    color:blue;
+    position:relative;
+}
+.middlepane p a:after{
+    width:100%;
+    bottom:-10px;
+    position:absolute;
+    left:0;
+    height:1px;
+    display:block;
+    content:'';
+    background:blue;
+    opacity: 0;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+.middlepane p a:hover:after{
+    opacity:1;
+    bottom: -2px;
+}
+
+.formgroup{
+    margin: 0 0 25px 0;
+}
+.front-form input[type="text"],
+.front-form input[type="email"],
+.front-form input[type="password"]{
+    width:100%;
+    margin: 0 0 15px 0;
+    padding: 10px 15px;
+    float:left;
+    display:block;
+    font-weight:500;
+    font-size:18px;
+    line-height: 18px;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    -o-appearance:none;
+    appearance:none;
+    border:none;
+    background:#eee;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+.front-form input[type="submit"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: none;
+    background: #20d83c;
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: #0b6819;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+.front-form input[type="submit"]:hover{
+    cursor:pointer;
+    color:#04330b;
+    background:#14bd2e;
+}
+
+
+
+
+
+
+
+
+/*  */

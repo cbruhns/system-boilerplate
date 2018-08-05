@@ -1,0 +1,31 @@
+<div class="middlepane">
+    {{#if mail}}
+            <div class="alert alert-danger">Email has taken already try new</div>
+    {{/if}}
+    {{#if errors}}
+          {{#each errors}}
+            <div class="alert alert-danger">{{msg}}</div>
+          {{/each}}
+    {{/if}}
+
+
+
+
+
+    <h1>Register</h1>
+    <form class="front-form" action="/register" method="post">
+        <div class="formgroup">
+            <input type="text" name="firstname" value="{{#if formData}}{{formData.firstname}}{{/if}}" placeholder="first name">
+            <input type="text" name="lastname" value="{{#if formData}}{{formData.lastname}}{{/if}}" placeholder="last name">
+            <input type="email" name="email" value="{{#if formData}}{{formData.email}}{{/if}}" placeholder="email">
+            <input type="text" name="github" value="{{#if formData}}{{formData.github}}{{/if}}" placeholder="github username">
+        </div>
+        <div class="formgroup">
+            <input type="password" name="password" value="" placeholder="password">
+            <input type="password" name="password2" value="" placeholder="verify password">
+            <input type="submit" name="submit" value="Register">
+        </div>
+    </form>
+    <p>Already registered? <a class="registerbutton" href="/">Login.</a></p>
+    <div class="cf"></div>
+</div>
