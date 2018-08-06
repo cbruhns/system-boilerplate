@@ -15,8 +15,8 @@ router.get('/register', function(req, res){
 	res.render('register');
 });
 
-passport.use(new LocalStrategy(function (username, password, done) {
-    User.getUserByUsername(username, function (err, user) {
+passport.use(new LocalStrategy(function (email, password, done) {
+    User.getUserByEmail(email, function (err, user) {
         if (err) throw err;
         if (!user) {
             return done(null, false, { message: 'Unknown User' });
