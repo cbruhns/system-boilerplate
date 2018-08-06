@@ -80,19 +80,19 @@ router.post('/register', function (req, res) {
 		});
 	}
 	else {
-		var newUser = new User({
-			firstname: firstname,
-			lastname: lastname,
-			email: email,
-			github: github,
-			password: password,
-			created: new Date()
-		});
-		User.createUser(newUser, function (err, user) {
-			if (err) throw err;
-			// console.log(user);
-		});
-		res.redirect('/?new=true');
+		// var newUser = new User({
+		// 	firstname: firstname,
+		// 	lastname: lastname,
+		// 	email: email,
+		// 	github: github,
+		// 	password: password,
+		// 	created: new Date()
+		// });
+		// User.createUser(newUser, function (err, user) {
+		// 	if (err) throw err;
+		// 	// console.log(user);
+		// });
+		// res.redirect('/?new=true');
 
 
 		User.findOne({ email: {
@@ -106,14 +106,17 @@ router.post('/register', function (req, res) {
 			else {
 				var newUser = new User({
 					firstname: firstname,
+					lastname: lastname,
 					email: email,
-					password: password
+					github: github,
+					password: password,
+					created: new Date()
 				});
 				User.createUser(newUser, function (err, user) {
 					if (err) throw err;
 					console.log(user);
 				});
-				res.redirect('/', {successNewAccount: true});
+				res.redirect('/?new=true');
 			}
 		});
 
