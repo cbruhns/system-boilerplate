@@ -80,21 +80,6 @@ router.post('/register', function (req, res) {
 		});
 	}
 	else {
-		// var newUser = new User({
-		// 	firstname: firstname,
-		// 	lastname: lastname,
-		// 	email: email,
-		// 	github: github,
-		// 	password: password,
-		// 	created: new Date()
-		// });
-		// User.createUser(newUser, function (err, user) {
-		// 	if (err) throw err;
-		// 	// console.log(user);
-		// });
-		// res.redirect('/?new=true');
-
-
 		User.findOne({ email: {
 				"$regex": "^" + email + "\\b", "$options": "i"
 		}}, function (err, mail) {
@@ -114,13 +99,59 @@ router.post('/register', function (req, res) {
 				});
 				User.createUser(newUser, function (err, user) {
 					if (err) throw err;
-					console.log(user);
+					// console.log(user);
 				});
 				res.redirect('/?new=true');
 			}
 		});
 
 	}
+});
+
+
+passport.use(new LocalStrategy({
+	    usernameField: 'email',
+	    passwordField: 'password'
+	}, function (email, password, done) {
+	User.getUserByEmail(email, function (err, user) {
+		if (err) throw err;
+		if (!user) {
+			return done(null, false, { message: 'Unknown User' });
+			console.log('Unknown User');
+		}
+		User.comparePassword(password, user.password, function (err, isMatch) {
+			if (err) throw err;
+			if (isMatch) {
+				console.log('GOOD');
+				return done(null, user);
+			} else {
+				console.log('Invalid password');
+				return done(null, false, { message: 'Invalid password' });
+			}
+		});
+	});
+}));
+
+passport.serializeUser(function (user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+	User.getUserById(id, function (err, user) {
+		done(err, user);
+	});
+});
+
+router.post('/login',
+	passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/', failureFlash: false }),
+	function (req, res) {
+		res.redirect('/');
+	});
+
+router.get('/logout', function (req, res) {
+	req.logout();
+
+	res.redirect('/');
 });
 
 

@@ -11,7 +11,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-console.log(process.env);
+// console.log(process.env);
 mongoose.connect(process.env.MONGOPATH);
 
 var db = mongoose.connection;
@@ -38,10 +38,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
 app.use(session({
-    secret: 'secret',
+    secret: '3b1qy3lx6b18h2rj48p0wvk40000gn',
     saveUninitialized: true,
     resave: true
 }));
+
 
 // Passport init
 app.use(passport.initialize());
